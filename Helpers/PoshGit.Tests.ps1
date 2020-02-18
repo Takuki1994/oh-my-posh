@@ -51,6 +51,11 @@ Describe "Test-GetBranchSymbol" {
             $symbol = Get-BranchSymbol 'origin/master'
             $symbol | Should Be $themeSettings.GitSymbols.OriginSymbols.Bitbucket
         }
+        It "Uses BitBucket(stash)" {
+            Mock Get-GitRemoteUrl { return 'stash.com/test.git' }
+            $symbol = Get-BranchSymbol 'origin/master'
+            $symbol | Should Be $themeSettings.GitSymbols.OriginSymbols.Bitbucket
+        }
         It "Uses something else" {
             Mock Get-GitRemoteUrl { return 'example.com/test.git' }
             $symbol = Get-BranchSymbol 'origin/master'

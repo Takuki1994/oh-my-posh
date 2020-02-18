@@ -30,6 +30,9 @@ function Get-BranchSymbol($upstream) {
     elseif ($originUrl.Contains("bitbucket")) {
         return $sl.GitSymbols.OriginSymbols.Bitbucket
     }
+    elseif ($originUrl.Contains("stash")) {
+        return $sl.GitSymbols.OriginSymbols.Bitbucket
+    }
     elseif ($originUrl.Contains("gitlab")) {
         return $sl.GitSymbols.OriginSymbols.GitLab
     }
